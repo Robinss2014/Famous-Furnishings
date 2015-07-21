@@ -1,0 +1,83 @@
+/**
+ * 
+ * general styles for index
+ * 
+ */
+body {
+  height: 100%;
+  background-color: #f5f5f5;
+}
+
+.header a:hover{
+	background-color: #E3E3E3;
+}
+
+.wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -80px;
+  /* Pad bottom by footer height */
+  padding: 0 0 80px;
+}
+
+.main {
+    min-height: 700px;
+}
+
+#custom-panel {
+  background-color: #DFEAFF;
+  height:620px;
+  margin-top: 20px;
+}
+
+#styles {
+  height: 170px;
+}
+
+#styles span {
+  color: #666666;
+  padding-left: 20px;
+}
+#styles .thumb {
+  background-color: #FFFFFF;
+  height: 88px;
+  margin-top: 16px;
+  padding:16px 0 10px 0;
+}
+
+#styles .thumb:hover {
+  border: .2em solid #CB1507;
+}
+
+#review-panel {
+  background-color: yellow;
+  height:620px;
+  padding-top: 20px;
+}
+
+.my-title {
+  background-color: #252466;
+  height: 30px;
+  font-size: 14px;
+  color: #FFFFFF;
+  padding: 5px 0 5px 10px;
+}
+
+.footer {
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 100px;
+}
+
+.bottomShadow{
+	-webkit-box-shadow: inset 0px -11px 8px -10px #CCC; 
+	   -moz-box-shadow: inset 0px -11px 8px -10px #CCC;
+	        box-shadow: inset 0px -11px 8px -10px #CCC;
+}
+
+.topShadow{
+	-webkit-box-shadow: inset 0px 11px 8px -10px #CCC;
+	  -moz-box-shadow: inset 0px 11px 8px -10px #CCC;
+	       box-shadow: inset 0px 11px 8px -10px #CCC;
+}
