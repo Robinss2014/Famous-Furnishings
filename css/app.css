@@ -22,13 +22,18 @@ body {
 }
 
 .main {
-    min-height: 700px;
+    min-height: 500px;
+    background-color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 50px;
 }
 
 #custom-panel {
   background-color: #DFEAFF;
-  height:620px;
+  height:500px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #styles {
@@ -41,7 +46,7 @@ body {
 }
 #styles .thumb {
   background-color: #FFFFFF;
-  height: 88px;
+  height:88px;
   margin-top: 16px;
   padding:16px 0 10px 0;
 }
@@ -50,10 +55,50 @@ body {
   border: .2em solid #CB1507;
 }
 
+#colors {
+  height: 120px;
+}
+
+#colors span {
+  color: #666666;
+  padding-left: 2px;
+}
+
+#colors .thumb {
+  background-color: #FFFFFF;
+  height: 40px;
+  margin-top: 16px;
+}
+
+#colors .thumb:hover {
+  border: .2em solid #CB1507;
+}
+
+#pillows {
+  height: 170px;
+}
+
+#pillows span {
+  color: #666666;
+  padding-left: 5px;
+}
+
+#pillows .thumb {
+  background-color: #FFFFFF;
+  height:88px;
+  margin-top: 16px;
+}
+
+#pillows .thumb:hover {
+  border: .2em solid #CB1507;
+}
+
 #review-panel {
-  background-color: yellow;
-  height:620px;
-  padding-top: 20px;
+  margin:30px 0 20px 0;
+}
+
+#review-panel .review {
+  padding:0px 50px 20px 10px;
 }
 
 .my-title {

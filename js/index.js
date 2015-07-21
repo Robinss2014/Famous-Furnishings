@@ -1,1 +1,3 @@
-sa
+$(function() {
+    console.log( "Ready!" );
+});
