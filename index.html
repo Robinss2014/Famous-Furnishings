@@ -9,9 +9,11 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/app.css" />
+	<link rel="stylesheet" type="text/css" href="css/image-picker.css" />
 	<!-- libraries -->
 	<script type="text/javascript" src="js/lib/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="js/lib/LensBlurDepthExtractor.js"></script>
+	<script type="text/javascript" src="js/lib/mustache.js"></script>
+	<script type="text/javascript" src="js/lib/image-picker.js"></script>
 	<!-- js -->
 	<script type="text/javascript" src="js/index.js"></script>
 </head>
@@ -39,13 +41,13 @@
 						<div class="row">
 							<div class="my-title">Step 1 - Pick Your style</div>
 						</div>
-						<div class="row">
+						<div id="dif-styles" class="row">
 							<div class="col-sm-4 col-xs-4">
-								<img class="thumb" src="images/styles/Montclair.jpeg" />
+								<img class="thumb selected" src="images/styles/montclair.jpeg" />
 								<span>Montclair</span>
 							</div>
 							<div class="col-sm-4 col-xs-4">
-								<img class="thumb" src="images/styles/Uptown.jpeg" />
+								<img class="thumb" src="images/styles/uptown.jpeg" />
 								<span>Uptown</span>
 							</div>
 						</div>
@@ -54,41 +56,53 @@
 						<div class="row">
 							<div class="my-title">Step 2 - Pick Your color</div>
 						</div>
-						<div class="row">
-							<div class="col-sm-2 col-xs-2">
-								<img class="thumb" src="images/colors/Hydra.jpeg" />
+						<div id="dif-colors" class="row">
+							<!-- <div class="col-sm-2 col-xs-2">
+								<img class="thumb selected" src="images/colors/{{}}.jpeg" />
 								<span>Hydra</span>
 							</div>
 							<div class="col-sm-2 col-xs-2">
 								<img class="thumb" src="images/colors/Indigo.jpeg"/>
 								<span>Indigo</span>
-							</div>
+							</div> -->
 						</div>
+						<script id="color-template" type="x-tmpl-mustache">
+							{{#colors}}<div class="col-sm-2 col-xs-2">
+								<img class="thumb" src="images/colors/{{.}}.jpeg" />
+								<span>{{.}}</span>
+							</div>{{/colors}}
+						</script>
 					</div>
 					<div id="pillows">
 						<div class="row">
 							<div class="my-title">Step 3 - Pick Your pillow</div>
 						</div>
-						<div class="row">
-							<div class="col-sm-4 col-xs-4">
-								<img class="thumb" src="images/pillows/pillow_basque_turquoise.jpeg" />
-								<span>Basque Turquoise</span>
-							</div>
-							<div class="col-sm-4 col-xs-4">
-								<img class="thumb" src="images/pillows/pillow_missy_multi.jpeg" />
+						<div id="dif-pillows" class="row">
+<!-- 							<div class="col-sm-4 col-xs-4">
+								<img class="thumb selected" src="images/pillows/missy_multi.jpeg" />
 								<span>Missy Multi</span>
 							</div>
 							<div class="col-sm-4 col-xs-4">
-								<img class="thumb" src="images/pillows/pillow_vibes_pink.jpeg" />
-								<span>Vibes Pink</span>
+								<img class="thumb" src="images/pillows/basque_turquoise.jpeg" />
+								<span>Basque Turquoise</span>
 							</div>
+							<div class="col-sm-4 col-xs-4">
+								<img class="thumb" src="images/pillows/vibes_pink.jpeg" />
+								<span>Vibes Pink</span>
+							</div> -->
 						</div>
+						<script id="pillow-template" type="x-tmpl-mustache">
+							{{#pillows}}<div class="col-sm-4 col-xs-4">
+								<img class="thumb" src="images/pillows/{{.}}.jpeg" />
+								<span>{{.}}</span>
+							</div>{{/pillows}}
+						</script>
 					</div>
 				</div>
-				<!-- Review Panel -->
-				<div id="review-panel" class="col-md-8 col-sm-8 col-xs-8" >
-					<div class="review">
-						<img src="images/reviews/Hydra_montclair.jpeg" width="700px" />
+				<!-- Preview Panel -->
+				<div id="preview-panel" class="col-md-8 col-sm-8 col-xs-8" >
+					<div class="preview">
+						<img src="images/previews/Hydra_montclair.jpeg" width="700px" />
 					</div>
 				</div>
 			</div>
