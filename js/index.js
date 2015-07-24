@@ -1,16 +1,25 @@
 $(function() {
     console.log( "Ready!" );
+    var canvas = window._canvas = new fabric.StaticCanvas('canvas');
 
     var style1 = { 
     	style: "montclair",
       colors: ['Hydra', 'Indigo','Vanilla', 'Wasabi'],
-      pillows: ['Missy_Multi', 'Basque_Turquoise', 'Calliope_Carnival']
+      pillows: ['Missy_Multi', 'Basque_Turquoise', 'Calliope_Carnival'],
+      scale:1.5,
+      left:[80,495],
+      top:[150,143],
+      angle:[-7,8]
     };
 
     var style2 = { 
     	style: "uptown",
       colors: ['Platinum', 'Sundown'],
-      pillows: ['Gypsy_Beet', 'Basque_Turquoise', 'Vibes_Pink']
+      pillows: ['Gypsy_Beet', 'Basque_Turquoise', 'Vibes_Pink'],
+      scale:1.5,
+      left:[92,480],
+      top:[150,143],
+      angle:[-7,8]
     };
 
     var data=style1;
@@ -35,8 +44,6 @@ $(function() {
       changeStyle(data);
 
     });
-
-
 
     function changeStyle(data){
       var colorTemplate = $('#color-template').html();
@@ -90,7 +97,8 @@ $(function() {
       var preview = $(".preview img");
 
       var source = "images/previews/"+data.colors[ncolor]+"_"+data.style+".jpeg";
-      preview.attr('src', source);  
+      // preview.attr('src', source); 
+      loadImagefromURL(source); 
 
     }
 
@@ -109,8 +117,35 @@ $(function() {
       console.log(baseImage);
       console.log(pillow);
 
+      canvas.clear();
       // Combine the baseImage and pillow Image here
+      fabric.Image.fromURL(baseImage, function(img) {
+        var base = img.set({ 
+                      width: 700,
+                      height: 488 
+                    });
+
+        fabric.Image.fromURL(pillow, function(img) {
+          var pillow1 = img.set({ scaleX: data.scale , scaleY:data.scale, angle: data.angle[0], left: data.left[0], top: data.top[0] });
+          var pillow2 = fabric.util.object.clone(img).set({ angle: data.angle[1], left: data.left[1], top: data.top[1] });
+          canvas.add(new fabric.Group([ base, pillow1, pillow2], { left: 0, top: 0 }));
+          canvas.renderAll();
+        });
+      });
       
 
+    }
+
+    function loadImagefromURL(url){
+      canvas.clear();
+      fabric.Image.fromURL(url, function(oImg) {
+        oImg.set({
+            width: 700,
+            height: 488
+        });
+        canvas.add(oImg);
+        canvas.centerObject(oImg);
+        canvas.renderAll();
+      });
     }
 });
