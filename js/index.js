@@ -51,7 +51,7 @@ $(function() {
 
       ncolor = 0;
       npillow = 0;
-      setPreviewImage(data, ncolor, npillow);
+      setPreviewImage(data, ncolor);
 
       $('#colors img').click(function(){
         $('#colors img').removeClass('selected');
@@ -62,7 +62,7 @@ $(function() {
 
         ncolor=data.colors.indexOf(color);
         console.log("ncolor = "+ncolor);
-        setPreviewImage(data, ncolor, npillow);
+        setPreviewImage(data, ncolor);
       });
 
       $('#pillows img').click(function(){
@@ -72,22 +72,45 @@ $(function() {
         var pillow = $(this).attr('src').replace(/\.[^.$]+$/, '').split('/')[2];
         console.log(pillow);
 
+        npillow = data.pillows.indexOf(pillow);
+        console.log("npillow = "+npillow);
+
+        createPreviewImage(data, ncolor, npillow);
+
       });
 
     }
 
-    function changeColor(ncolor){
-      setPreviewImage(data, ncolor, npillow);
-    }
     /**
      * Set the preview image 
-     * @param style [A string for unique styles]
-     * @param color [A string for unique colors]
+     * @param data    [An object containing all the information]
+     * @param ncolor  [The position for color in the array colors]
      */
-    function setPreviewImage(data, ncolor, npillow){
-    	var preview = $(".preview img");
+    function setPreviewImage(data, ncolor){
+      var preview = $(".preview img");
 
-    	var source = "images/previews/"+data.colors[ncolor]+"_"+data.style+".jpeg";
-    	preview.attr('src', source); 	
+      var source = "images/previews/"+data.colors[ncolor]+"_"+data.style+".jpeg";
+      preview.attr('src', source);  
+
+    }
+
+    /**
+     * Create the preview image by combining the base image and the pillow image
+     * @param data    [An object containing all the information]
+     * @param ncolor  [The position for color in the array colors]
+     * @param npillow [The position for the pillow in the array pillows]
+     */
+    function createPreviewImage(data, ncolor, npillow){
+      var preview = $(".preview img");
+
+      var baseImage = "images/previews/"+data.colors[ncolor]+"_"+data.style+".jpeg";
+      var pillow = "images/pillows/"+data.pillows[npillow]+".jpeg";
+
+      console.log(baseImage);
+      console.log(pillow);
+
+      // Combine the baseImage and pillow Image here
+      
+
     }
 });
