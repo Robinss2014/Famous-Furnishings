@@ -69,7 +69,8 @@ $(function() {
 
         ncolor=data.colors.indexOf(color);
         console.log("ncolor = "+ncolor);
-        setPreviewImage(data, ncolor);
+        // setPreviewImage(data, ncolor);
+        createPreviewImage(data, ncolor, npillow);
       });
 
       $('#pillows img').click(function(){
