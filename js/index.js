@@ -1,6 +1,7 @@
 $(function() {
     console.log( "Ready!" );
     var canvas = window._canvas = new fabric.StaticCanvas('canvas');
+    canvas.setBackgroundImage('images/previews/Platinum_uptown.jpeg', canvas.renderAll.bind(canvas));
 
     var style1 = { 
     	style: "montclair",
