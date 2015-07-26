@@ -6,20 +6,20 @@ $(function() {
     	style: "montclair",
       colors: ['Hydra', 'Indigo','Vanilla', 'Wasabi'],
       pillows: ['Missy_Multi', 'Basque_Turquoise', 'Calliope_Carnival'],
-      scale:1.5,
-      left:[80,495],
-      top:[150,143],
-      angle:[-7,8]
+      scale:1.66,
+      left:[74,485],
+      top:[150,135],
+      angle:[-7.5,7]
     };
 
     var style2 = { 
     	style: "uptown",
       colors: ['Platinum', 'Sundown'],
-      pillows: ['Gypsy_Beet', 'Basque_Turquoise', 'Vibes_Pink'],
-      scale:1.5,
-      left:[92,480],
-      top:[150,143],
-      angle:[-7,8]
+      pillows: ['Gypsy_Beet', 'Basque_Turquoise', 'Maharam_BK'],
+      scale:1.55,
+      left:[100,470],
+      top:[151,135],
+      angle:[-7.5,8.2]
     };
 
     var data=style1;
@@ -113,7 +113,7 @@ $(function() {
       var preview = $(".preview img");
 
       var baseImage = "images/previews/"+data.colors[ncolor]+"_"+data.style+".jpeg";
-      var pillow = "images/pillows/"+data.pillows[npillow]+".jpeg";
+      var pillow = "images/pillows/"+data.pillows[npillow]+".png";
 
       console.log(baseImage);
       console.log(pillow);
