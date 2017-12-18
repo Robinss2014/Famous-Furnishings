@@ -1,5 +1,4 @@
 $(function() {
-    console.log( "Ready!" );
     var canvas = window._canvas = new fabric.StaticCanvas('canvas');
     canvas.setBackgroundImage('images/previews/Platinum_uptown.jpeg', canvas.renderAll.bind(canvas));
 
@@ -34,7 +33,6 @@ $(function() {
       $(this).addClass('selected');
 
       style = $(this).attr('src').replace(/\.[^.$]+$/, '').split('/')[2];
-      console.log(style);
 
       if(style=="uptown"){
         data = style2;
@@ -47,13 +45,13 @@ $(function() {
     });
 
     function changeStyle(data){
-      var colorTemplate = $('#color-template').html();
-      var colorRendered = Mustache.render(colorTemplate, data);
+      let colorTemplate = $('#color-template').html();
+      let colorRendered = Mustache.render(colorTemplate, data);
       $('#dif-colors').html(colorRendered);
       $('#colors img')[0].setAttribute("class", "thumb selected");
 
-      var pillowTemplate = $('#pillow-template').html();
-      var pillowRendered = Mustache.render(pillowTemplate, data);
+      let pillowTemplate = $('#pillow-template').html();
+      let pillowRendered = Mustache.render(pillowTemplate, data);
       $('#dif-pillows').html(pillowRendered);
       $('#pillows img')[0].setAttribute("class", "thumb selected");
 
@@ -65,11 +63,9 @@ $(function() {
         $('#colors img').removeClass('selected');
         $(this).addClass('selected');
 
-        var color = $(this).attr('src').replace(/\.[^.$]+$/, '').split('/')[2];
-        console.log(color);
-
+        let color = $(this).attr('src').replace(/\.[^.$]+$/, '').split('/')[2];
         ncolor=data.colors.indexOf(color);
-        console.log("ncolor = "+ncolor);
+
         // setPreviewImage(data, ncolor);
         createPreviewImage(data, ncolor, npillow);
       });
@@ -78,14 +74,9 @@ $(function() {
         $('#pillows img').removeClass('selected');
         $(this).addClass('selected');
 
-        var pillow = $(this).attr('src').replace(/\.[^.$]+$/, '').split('/')[2];
-        console.log(pillow);
-
+        let pillow = $(this).attr('src').replace(/\.[^.$]+$/, '').split('/')[2];
         npillow = data.pillows.indexOf(pillow);
-        console.log("npillow = "+npillow);
-
         createPreviewImage(data, ncolor, npillow);
-
       });
 
     }
@@ -96,12 +87,9 @@ $(function() {
      * @param ncolor  [The position for color in the array colors]
      */
     function setPreviewImage(data, ncolor){
-      var preview = $(".preview img");
-
-      var source = "images/previews/"+data.colors[ncolor]+"_"+data.style+".jpeg";
-      // preview.attr('src', source); 
+      let preview = $(".preview img");
+      let source = "images/previews/"+data.colors[ncolor]+"_"+data.style+".jpeg";
       loadImagefromURL(source); 
-
     }
 
     /**
@@ -111,31 +99,25 @@ $(function() {
      * @param npillow [The position for the pillow in the array pillows]
      */
     function createPreviewImage(data, ncolor, npillow){
-      var preview = $(".preview img");
-
-      var baseImage = "images/previews/"+data.colors[ncolor]+"_"+data.style+".jpeg";
-      var pillow = "images/pillows/"+data.pillows[npillow]+".png";
-
-      console.log(baseImage);
-      console.log(pillow);
-
+      let preview = $(".preview img");
+      let baseImage = "images/previews/"+data.colors[ncolor]+"_"+data.style+".jpeg";
+      let pillow = "images/pillows/"+data.pillows[npillow]+".png";
       canvas.clear();
+
       // Combine the baseImage and pillow Image here
       fabric.Image.fromURL(baseImage, function(img) {
-        var base = img.set({ 
+        let base = img.set({ 
                       width: 700,
                       height: 488 
                     });
 
         fabric.Image.fromURL(pillow, function(img) {
-          var pillow1 = img.set({ scaleX: data.scale , scaleY:data.scale, angle: data.angle[0], left: data.left[0], top: data.top[0] });
-          var pillow2 = fabric.util.object.clone(img).set({ angle: data.angle[1], left: data.left[1], top: data.top[1] });
+          let pillow1 = img.set({ scaleX: data.scale , scaleY:data.scale, angle: data.angle[0], left: data.left[0], top: data.top[0] });
+          let pillow2 = fabric.util.object.clone(img).set({ angle: data.angle[1], left: data.left[1], top: data.top[1] });
           canvas.add(new fabric.Group([ base, pillow1, pillow2], { left: 0, top: 0 }));
           canvas.renderAll();
         });
       });
-      
-
     }
 
     function loadImagefromURL(url){
